@@ -1,7 +1,8 @@
-/* 1npy0 Scorecount 1.0
- * github.com/1npy0
- * inpyoj@gmail.com
- */
+/***********************************************************************************************************
+ * 1npy0 Scorecount 1.0.0 (https://github.com/1npy0/npy-scorecount)
+ * Developed by Inpyo Jeon (inpyoj@gmail.com)
+ * Images used for the sample page are designed by Ga Ae Lim.
+ ***********************************************************************************************************/
 
 // TIP: 날짜 및 시간 형식은 'YYYY-MM-DD HH:MM:SS' 형태의 기본 날짜 및 시간 형식과 'YYYYMMDDHHMMSS' 형태의 14자리 숫자, Date() 형식만 입력 가능합니다.
 function datetimeParse(str) { // 날짜 및 시간 스트링을 Date() 형식으로 파싱
