@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+<head>
+<title>1npy0 :: Scorecount Sample</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script src="npy-scorecount.js"></script>
+<style>
+	#sample4 .npy-tokens { font-size:50px; margin:0 5px; }
+	#sample5 .npy-tokens { font-size:25px; margin:0 5px; }
+	#sample6 { position:relative; width:100%; max-width:1081px; }
+	#sample6 img { width:100%; }
+	#sample6 .npy-scwrap { position:absolute !important; top:0; left:0; width:100%; height:100%; }
+	#sample6 .npy-scdigit { position:absolute !important; top:24.95%; }
+	#sample6 .npy-scdigit._0 { left:18.36%; }
+	#sample6 .npy-scdigit._1 { left:28.12%; }
+	#sample6 .npy-scdigit._2 { left:40.53%; }
+	#sample6 .npy-scdigit._3 { left:50.35%; }
+	#sample6 .npy-scdigit._4 { left:62.72%; }
+	#sample6 .npy-scdigit._5 { left:72.53%; }
+</style>
+</head>
+<body>
+	<!-- 출력 wrapper -->
+	<div id="sample1"></div>
+	<div id="sample2"></div>
+	<div id="sample3"></div><br>
+	<div id="sample4"></div><br>
+	<div id="sample5"></div><br>
+	<div id="sample6">
+		<img src="sample_blackfriday.jpg">
+	</div>
+	
+	<!-- 입력값 -->
+	<input id="starttime" type="hidden" value="2016-12-25 11:00:00"/> <!-- 시작 시점: 기본 날짜 및 시간 형식 입력 -->
+	<input id="endtime1" type="hidden" value="2016-12-29 12:00:00"/> <!-- 종료 시점: 기본 날짜 및 시간 형식 입력 -->
+	<input id="endtime2" type="hidden" value="20161229120000"/> <!-- 종료 시점: 14자리 스트링 형식 입력 -->
+	
+	<!-- 플러그인 호출 -->
+	<script>
+		$(function(){
+			var test1 = $('#endtime1').val(); // 'YYYY-MM-DD HH:MM:SS' 형태 기본 날짜 및 시간 입력
+			var test2 = $('#endtime2').val(); // 'YYYYMMDDHHMMSS' 형태 14자리 숫자 입력
+			var test3 = new Date(); // Date() 형식 입력 (Type: Object)
+			
+			$('#sample1').npyScorecount({ // 옵션 항목을 모두 입력한 경우
+				startDate: $('#starttime').val(),
+				endDate: test1,
+				gmt: '+0900'
+			});
+			
+			$('#sample2').npyScorecount({ // 시작 시점과 타임존을 입력하지 않은 경우, 남은 날짜 비표기
+				endDate: test2,
+				displayDays: false
+			});
+			
+			$('#sample3').npyScorecount(); // 아무 옵션도 입력하지 않은 경우
+			
+			$('#sample4').npyScorecount({ // 시작 시점을 입력하지 않은 경우, 남은 날짜 비표기 스코어보드 형태 출력
+				endDate: test2,
+				displayDays: false,
+				gmt: '-0230',
+				imageCounter: true
+			});
+			
+			$('#sample5').npyScorecount({ // 남은 날짜 표기 스코어보드 형태 출력
+				startDate: $('#starttime').val(),
+				endDate: test2,
+				gmt: '+0900',
+				imageCounter: true,
+				digitSize: [50, 70],
+				tokens: ['days&nbsp;', 'hours&nbsp;', 'minutes&nbsp;', 'seconds left']
+			});
+			
+			$('#sample6').npyScorecount({ // 남은 날짜 비표기 스코어보드 형태 출력, 반응형
+				startDate: $('#starttime').val(),
+				endDate: test2,
+				displayDays: false,
+				gmt: '+0900',
+				imageCounter: true,
+				digitSize: ['9.27%', '9.97%'],
+				tokens: ['', '', '', '']
+			});
+		});
+	</script>
+</body>
+</html>
